@@ -22,7 +22,7 @@ public class E2ETest extends BaseTest {
 
 
         loginPage.goToLoginPage();
-        loginPage.login("alian.armaz@gmail.com","12345678");
+        loginPage.login("Salma.beyazid@gmail.com","12345678");
         homePage.home();
         itemsPage.items("98","2000", "cinema");
         itemsPage.AddToCart();
