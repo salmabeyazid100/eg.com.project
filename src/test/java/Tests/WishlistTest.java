@@ -9,34 +9,30 @@ import org.testng.annotations.Test;
 
 @Listeners({AllureTestNg.class})
 @Epic("E-Commerce Application")
-@Feature("End-to-End Purchase Flow")
+@Feature("Wishlist Management")
 
-public class E2ETest extends BaseTest {
+public class WishlistTest extends BaseTest {
 
-    @Test(description = "User can complete full purchase flow from login to checkout")
-    @Story("Complete order placement")
-    @Severity(SeverityLevel.BLOCKER)
-    @Description("This test verifies that a user can log in, apply filters, select an item, add it to the cart, and complete the checkout process successfully.")
+    @Test(description = "User can add an item to the wishlist and manage it")
+    @Story("Wishlist interaction flow")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("This test verifies that a logged-in user can filter items, add an item to the wishlist, view it, add to cart, remove from wishlist, and continue browsing.")
 
-    public void flowPurchaseTest() throws InterruptedException {
+
+    public void AddWishlistTest() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         FilterPage filterPage = new FilterPage(driver);
         ItemsPage itemsPage = new ItemsPage(driver);
-        CheckoutPage checkoutPage = new CheckoutPage(driver);
-
-
+        WishlistPage wishlistPage = new WishlistPage(driver);
 
         loginPage.goToLoginPage();
         loginPage.login("Salma.beyazid@gmail.com","12345678");
         homePage.home();
+
         filterPage.filter("98","2000", "cinema");
         itemsPage.items();
-        itemsPage.AddToCart();
-        checkoutPage.ProceedToCheckout("alian","aramz","Almaz","street 123","Maadi","12345","\"Please deliver between 5 PM and 7 PM.");
-
-
-
+        wishlistPage.WishlistManagement();
 
 
 

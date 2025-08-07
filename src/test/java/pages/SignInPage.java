@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -29,6 +30,8 @@ public class SignInPage {
     By PrivacyPolicyCheckbox = By.xpath("//*[@id=\"content\"]/form/div/div/div");
     By ContinueButton = By.xpath("//*[@id=\"content\"]/form/div/div/input");
     By Successmesg = By.xpath("//*[@id=\"content\"]/h1");
+
+    @Step("Navigate to registration page, hovering over 'My account' menu and clicking on 'Register' link, then filling in the registration form with provided data: {firstname}, {lastname}, {email}, {telephone}, {password}, {confirmpassword}, and submitting the form, expecting a success message")
     public void goToRegisterPage() {
         WebElement account = wait.until(ExpectedConditions.visibilityOfElementLocated(myAccountMenu));
 

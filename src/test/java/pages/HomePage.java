@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -30,7 +31,7 @@ public class HomePage {
 
 
 
-
+    @Step("Navigate to Home and click on item category 'Software', scroll into view, and click on it, bypassing any overlay issues")
     public void home() {
 
         wait.until(ExpectedConditions.elementToBeClickable(HomeButton)).click();

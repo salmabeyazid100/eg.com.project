@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -45,28 +46,14 @@ public class CheckoutPage {
     By ConfirmOrderButton = By.id("button-confirm");
 
 
-
+    @Step("Proceeding to checkout with data: {firstName} {lastName}, {company}, {address1}, {city}, {postcode}, comment: {comment}, and accepting terms, and conditions, and confirming the order")
     public void ProceedToCheckout(String firstName, String lastName, String company, String address1, String city, String postcode, String comment) {
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.PAGE_UP).perform();
         wait.until(ExpectedConditions.elementToBeClickable(CartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(ProceedToCheckoutButton)).click();
 
-//        driver.findElement(FirstNameField).sendKeys(firstName);
-//        driver.findElement(LastNameField).sendKeys(lastName);
-//        driver.findElement(CompanyField).sendKeys(company);
-//        driver.findElement(Address1Field).sendKeys(address1);
-//        driver.findElement(CityField).sendKeys(city);
-//        driver.findElement(PostCodeField).sendKeys(postcode);
-//        Select countrySelect = new Select(driver.findElement(CountryDropdown));
-//        countrySelect.selectByVisibleText("Egypt");
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.textToBePresentInElementLocated(RegionDropdown, "Qina"));
-//
-//        Select regionSelect = new Select(driver.findElement(RegionDropdown));
-//        regionSelect.selectByVisibleText("Qina");
-//        driver.findElement(CouponCodeField).sendKeys(couponCode);
-//        driver.findElement(ApplyCouponButton).click();
+
         driver.findElement(CommentsField).sendKeys(comment);
         driver.findElement(TermsCheckbox).click();
         wait.until(ExpectedConditions.elementToBeClickable(ContinueButton)).click();

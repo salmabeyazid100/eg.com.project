@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -26,7 +27,7 @@ public class LoginPage {
 
 
 
-
+    @Step("Navigate to login page via 'My account' menu, then click on 'Login' link")
     public void goToLoginPage() {
         WebElement account = wait.until(ExpectedConditions.visibilityOfElementLocated(myAccountMenu));
 
@@ -37,7 +38,7 @@ public class LoginPage {
         login.click();
     }
 
-
+    @Step("Login with email: {email} and password")
     public void login(String email, String password) {
         driver.findElement(EmailField).sendKeys(email, Keys.TAB,
                 password, Keys.ENTER);

@@ -1,22 +1,24 @@
 package Tests;
 
+import io.qameta.allure.*;
+import io.qameta.allure.testng.AllureTestNg;
+import org.testng.annotations.Listeners;
 import pages.*;
 import base.BaseTest;
 import org.testng.annotations.Test;
 
-//@Listeners({AllureTestNg.class})
-//@Epic("Swag Labs Automation")
-//@Feature("E2E Purchase Flow")
+@Listeners({AllureTestNg.class})
+@Epic("E-Commerce Application")
+@Feature("User Registration")
 
 public class RegistrationTest extends BaseTest {
 
-    @Test
-//    @Story("user can complete successful purchase flow")
-//    @Severity(SeverityLevel.CRITICAL)
-//    @Description("This test verifies the end-to-end purchase flow on the Swag Labs website: It includes logging in -> adding an item to the cart -> proceeding to checkout -> completing the purchase.")
+    @Test(description = "User can successfully register a new account")
+    @Story("New user registration process")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("This test verifies that a new user can access the registration page, fill all required fields, agree to privacy policy, and successfully create an account.")
 
-
-    public void flowPurchaseTest() throws InterruptedException {
+    public void UserRegistrationTest() throws InterruptedException {
         SignInPage signInPage1 = new SignInPage(driver);
 
         signInPage1.goToRegisterPage();

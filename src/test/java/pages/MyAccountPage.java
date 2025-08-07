@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -40,11 +41,7 @@ public class MyAccountPage {
     By AddAddressButton = By.xpath("//*[@id=\"content\"]/form/div/div/input");
     By BackButton = By.xpath("//*[@id=\"content\"]/div[2]/div[1]/a");
     By AddressSuccessMessage = By.xpath("//*[@id=\"content\"]/h1");
-    //    By WishlistLink = By.linkText("Wish List");
-//    By MyOrdersLink = By.linkText("My Orders");
-//    By AddToCArtButton = By.xpath("//*[@id=\"entry_217825\"]/a/div[1]");
-//    By RemoveButton = By.xpath("//*[@id=\"entry_217825\"]/div[2]/button");
-//
+
     By SbscriptionLink = By.xpath("//*[@id=\"column-right\"]/div/a[13]");
     By SubscriptionNo = By.xpath("//*[@id=\"content\"]/form/fieldset/div/div/div[2]/label");
     By SubscriptionContinueButton = By.xpath("//*[@id=\"content\"]/form/div/div[2]/input");
@@ -54,6 +51,7 @@ public class MyAccountPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
     }
+    @Step("Update account info, change password, add address, update subscription, and logout, with data: {NewFirstName}, {NewLastName}, {email}, {Telephone}, {newpassword}, {confirmPassword}, {company}, {Address1}, {Address2}, {City}, {code},")
     public void MyAccountOptions(String NewFirstName, String NewLastName, String email, String Telephone, String newpassword, String confirmPassword , String company, String Address1, String Address2, String City, String code) {
 
         wait.until(ExpectedConditions.elementToBeClickable(EditAccountLink)).click();
