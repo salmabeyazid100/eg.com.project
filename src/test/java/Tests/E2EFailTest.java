@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 //@Epic("Swag Labs Automation")
 //@Feature("E2E Purchase Flow")
 
-public class E2EHappyTest extends BaseTest {
+public class E2EFailTest extends BaseTest {
 
     @Test
 
@@ -23,13 +23,13 @@ public class E2EHappyTest extends BaseTest {
 
 
         loginPage.goToLoginPage();
-        loginPage.login("alian.armaz@gmail.com","12345678");
+        loginPage.login("Salma.beyazid@gmail.com","12345678");
         homePage.home();
         filterPage.filter("98","2000", "cinema");
-        itemsPage.items();
-
-        itemsPage.AddToCart();
-        checkoutPage.ProceedToCheckout("alian","aramz","Almaz","street 123","Maadi","12345","\"Please deliver between 5 PM and 7 PM.");
+        itemsPage.item2();
+        itemsPage.FailingTest();
+        checkoutPage.ProceedToCheckoutFailing();
+        checkoutPage.verifyNoStockErrorMessage();
 
 
 
@@ -37,6 +37,9 @@ public class E2EHappyTest extends BaseTest {
 
 
     }
+
+
+
 
 
 

@@ -44,6 +44,12 @@ public class CheckoutPage {
     By TermsCheckbox = By.xpath("//*[@id=\"form-checkout\"]/div/div[2]/div/div[5]/label");
     By ContinueButton = By.id("button-save");
     By ConfirmOrderButton = By.id("button-confirm");
+//Failing Test
+    By Checkoutfailing = By.xpath("//*[@id=\"content\"]/div[2]/a[2]");
+
+
+
+
 
 
     @Step("Proceeding to checkout with data: {firstName} {lastName}, {company}, {address1}, {city}, {postcode}, comment: {comment}, and accepting terms, and conditions, and confirming the order")
@@ -60,5 +66,30 @@ public class CheckoutPage {
         wait.until(ExpectedConditions.elementToBeClickable(ConfirmOrderButton)).click();
 
     }
+    @Step("Verify bug in the checkout process to buy stock item")
+    public void ProceedToCheckoutFailing() {
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.PAGE_UP).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(CartButton)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(ProceedToCheckoutButton)).click();
+        driver.findElement(Checkoutfailing).click();
+
+
+
+    }
+    @Step("Verify no stock error message appears for in-stock items")
+    public void verifyNoStockErrorMessage() {
+        boolean isMessageDisplayed;
+        try {
+            isMessageDisplayed = driver.findElement(By.xpath("//*[@id=\"checkout-cart\"]/div[1]")).isDisplayed();
+        } catch (NoSuchElementException e) {
+            isMessageDisplayed = false;
+        }
+        if (isMessageDisplayed) {
+            System.out.println("BUG: Stock availability error message appeared for an in-stock item!");
+        }
+        Assert.assertFalse(isMessageDisplayed, "BUG: Stock availability error message appeared for an in-stock item!");
+    }
+
 
 }
